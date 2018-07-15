@@ -1,0 +1,22 @@
+{
+  "name": "clima-mundo",
+  "version": "1.0.0",
+  "description": "Consumo de API de Google",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@gitlab.com/Choapinus/nodejs_clima.git"
+  },
+  "author": "Don Choppy",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://gitlab.com/Choapinus/nodejs_clima/issues"
+  },
+  "homepage": "https://gitlab.com/Choapinus/nodejs_clima#README",
+  "dependencies": {
+    "yargs": "^12.0.1"
+  }
+}
