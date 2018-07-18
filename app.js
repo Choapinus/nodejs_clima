@@ -1,24 +1,24 @@
 const argv = require('./yargs/yargs').argv;
-const axios = require('axios');
+const lugar = require('./lugar/lugar');
+const clima = require('./clima/clima');
 
-const api_key = "AIzaSyA-HXVa2jtkGfKtIJwisxgC46RaWqC1xuI";
-const api_dir = "https://maps.googleapis.com/maps/api/geocode/json?address="; // despues de address se añade el nombre del lugar
+const getInfo = async(direccion) => {
 
-let encodeUrl = encodeURI(argv.direccion);
+    try {
 
-//console.log(encodeUrl);
+        let coords = await lugar.getLugarLatLng(direccion);
+        let temp = await clima.getClima(coords.lat, coords.lng);
+        return `La temperatura en ${ coords.direccion } es de ${ temp } grados Celsius`;
 
-axios.get(api_dir + encodeUrl + '&key=' + api_key)
-    .then((resp) => {
-        // console.log(JSON.stringify(resp.data, undefined, 2));
-        let data = resp.data;
-        let city = data.results[0];
-        let location = city.geometry.location;
+    } catch (error) {
+        return `No se pudo comprobar la temperatura en ${ direccion }`;
+    }
 
-        //console.log(resp.data);
-        console.log(city.formatted_address);
-        console.log(location); // lat, lng
-    })
-    .catch((err) => {
-        console.log(err);
-    });
+
+}
+
+getInfo(argv.direccion).then(msg => {
+    console.log(msg);
+}).catch(err => {
+    console.log(err);
+});
