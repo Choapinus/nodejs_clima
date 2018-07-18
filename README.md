@@ -1,4 +1,4 @@
-## Aplicaci√n de Clima - Curso Node.js Udemy
+## Aplicacion de Clima - Curso Node.js Udemy
 
 Recordar que se debe ejecutar el comando ```npm install``` para las librerias
 
